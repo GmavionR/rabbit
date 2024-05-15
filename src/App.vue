@@ -4,35 +4,10 @@ import HelloWorld from './components/HelloWorld.vue'
 import {watch} from 'vue'
 import {ref} from 'vue'
 
-const acount =ref(0)
-const acount1 =ref(0)
-
-const changeAcount =()=>{
-  acount.value++
-  acount1.value++
-}
-
-watch([acount,acount1],([acountn,acount1n],[acounto,acount1o])=>{
-  console.log(`新值${acountn},旧值${acounto}`)
-  console.log(`新值${acount1n},旧值${acount1o}`)
-})
 </script>
 
 <template>
-  <header>
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-      <div @click="changeAcount">{{ acount }}{{ acount1 }}</div>
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <el-button type="primary" size="large">Large</el-button>
 </template>
 
 <style scoped>
