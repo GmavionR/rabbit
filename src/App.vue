@@ -12,14 +12,11 @@ getCategoryAPI().then(res => {
 </script>
 
 <template>
-  <div class="scss1">scss</div>
-  <RouterView />
+  <RouterView/>
 </template>
 
 <style scoped lang="scss">
-.scss1 {
-  color: $priceColor;
-}
+
 
 header {
   line-height: 1.5;
