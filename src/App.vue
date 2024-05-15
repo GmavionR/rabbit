@@ -3,14 +3,24 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import {watch} from 'vue'
 import {ref} from 'vue'
+import {getCategoryAPI} from '@/apis/testAPI'
 
+
+getCategoryAPI().then(res => {
+  console.log(res)
+})
 </script>
 
 <template>
-  <el-button type="primary" size="large">Large</el-button>
+  <div class="scss1">scss</div>
+  <RouterView />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.scss1 {
+  color: $priceColor;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
