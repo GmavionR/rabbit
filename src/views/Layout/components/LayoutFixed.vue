@@ -2,7 +2,8 @@
 import { useScroll } from '@vueuse/core'
 const { y} = useScroll(window)
 import { onMounted, ref } from 'vue'
-import {useCategoryStore} from '@/stores/counter'
+import {useCategoryStore} from '@/stores/category'
+//获取实例
 const categoryStore = useCategoryStore()
 // const getList=async()=>{
 //     getCategoryAPI().then(res=>{
