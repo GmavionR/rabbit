@@ -6,9 +6,10 @@ import HomeHot from './components/HomeHot.vue'
 import HomeProduct from './components/HomeProduct.vue'
 </script>
 <template>
-    <div style="height:1600px">我是home页</div>
-    <HomeCategory/>
-    <HomeBanner/>
+    <div class="container">
+        <HomeCategory/>
+        <HomeBanner/>
+    </div>
     <HomeNew/>
     <HomeHot/>
     <HomeProduct/>
