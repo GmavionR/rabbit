@@ -1,9 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import {watch} from 'vue'
+import {onMounted, watch} from 'vue'
 import {ref} from 'vue'
 import {getCategoryAPI} from '@/apis/testAPI'
+
+
+
 
 
 getCategoryAPI().then(res => {
