@@ -3,15 +3,6 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import {onMounted, watch} from 'vue'
 import {ref} from 'vue'
-import {getCategoryAPI} from '@/apis/testAPI'
-
-
-
-
-
-getCategoryAPI().then(res => {
-  console.log(res)
-})
 </script>
 
 <template>
