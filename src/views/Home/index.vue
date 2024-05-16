@@ -4,7 +4,6 @@ import HomeBanner from './components/HomeBanner.vue'
 import HomeNew from './components/HomeNew.vue'
 import HomeHot from './components/HomeHot.vue'
 import HomeProduct from './components/HomeProduct.vue'
-import HomePanel from './components/HomePanel.vue'
 </script>
 <template>
     <div class="container">
@@ -14,8 +13,4 @@ import HomePanel from './components/HomePanel.vue'
     <HomeNew/>
     <HomeHot/>
     <HomeProduct/>
-    <HomePanel title="新鲜好物" subTitle="1 2">
-        <div>插槽</div>
-    </HomePanel>
-    <HomePanel title="哈哈哈哈" subTitle="1 2"></HomePanel>
 </template>
