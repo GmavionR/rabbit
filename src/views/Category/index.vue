@@ -1,17 +1,19 @@
 <script setup>
-// import {getCategoryAPI} from '@/apis/category.js'
+import {getCategoryAPI} from '@/apis/category.js'
 import { ref, reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
+import {onBeforeRouteUpdate} from 'vue-router'
 const categoryData = ref({})//ref返回value是{}，reactive返回value是Proxy。refImpl包装
 const route = useRoute()
-const getCategory = async (id) => {
-    const res = await axios.get(`/category/${id}`)
-    categoryData.value = res.data.result
+const getCategory = async (id = route.params.id) => {
+    const res = await getCategoryAPI(id)
+    // const res = await axios.get(`/category/${id}`)
+    categoryData.value = res.result
     console.log(categoryData, 'categoryData222222222222')
 }
 onMounted(() => {
-    getCategory(route.params.id)
+    getCategory()
     categoryStore({distributionSite: '2'})
 })
 
@@ -23,6 +25,12 @@ const categoryStore =async()=>{
   BannerList.value = res.result
   console.log(BannerList.value,'BannerList')
 }
+
+onBeforeRouteUpdate((to)=>{
+    
+    console.log(to,'路由变化了')
+    getCategory(to.params.id)
+})
 
 </script>
 
@@ -46,6 +54,25 @@ const categoryStore =async()=>{
       </el-carousel-item>
     </el-carousel>
   </div>
+  <div class="sub-list">
+  <h3>全部分类</h3>
+  <ul>
+    <li v-for="i in categoryData.children" :key="i.id">
+      <RouterLink to="/">
+        <img :src="i.picture" />
+        <p>{{ i.name }}</p>
+      </RouterLink>
+    </li>
+  </ul>
+</div>
+<div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
+  <div class="head">
+    <h3>- {{ item.name }}-</h3>
+  </div>
+  <div class="body">
+    <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
+  </div>
+</div>
     
 </template>
 
