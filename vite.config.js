@@ -7,6 +7,8 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+//导入mock插件
+import { viteMockServe } from "vite-plugin-mock"
 
 
 // https://vitejs.dev/config/
@@ -25,6 +27,10 @@ export default defineConfig({
     //  ElementPlus({
     //   useSource: true,
     // }),
+    viteMockServe({
+      mockPath: "mock",
+      localEnabled: true,
+    }),
   ],
   resolve: {
     alias: {

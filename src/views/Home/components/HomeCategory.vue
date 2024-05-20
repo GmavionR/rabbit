@@ -1,6 +1,10 @@
-<script setup>
+<script setup> 
+import { onMounted } from 'vue'
 import  {useCategoryStore} from '@/stores/category'
 const categoryStore = useCategoryStore()
+
+
+
 </script>
 
 <template>
