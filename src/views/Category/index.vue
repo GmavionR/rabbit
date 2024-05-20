@@ -12,7 +12,18 @@ const getCategory = async (id) => {
 }
 onMounted(() => {
     getCategory(route.params.id)
+    categoryStore({distributionSite: '2'})
 })
+
+// 轮播图
+import {getBannerAPI} from '@/apis/home.js'
+const BannerList = ref([])
+const categoryStore =async()=>{
+  let res = await getBannerAPI()
+  BannerList.value = res.result
+  console.log(BannerList.value,'BannerList')
+}
+
 </script>
 
 <template>
@@ -27,10 +38,29 @@ onMounted(() => {
             </div>
         </div>
     </div>
+
+    <div class="home-banner">
+    <el-carousel height="500px">
+      <el-carousel-item v-for="item in BannerList" :key="item">
+        <img :src="item.imgUrl" alt="">
+      </el-carousel-item>
+    </el-carousel>
+  </div>
+    
 </template>
 
 
 <style scoped lang="scss">
+.home-banner {
+  width: 1240px;
+  height: 500px;
+  z-index: 98;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    height: 500px;
+  }
+}
 .top-category {
     h3 {
         font-size: 28px;

@@ -5,6 +5,7 @@ const BannerList = ref([])
 const categoryStore =async()=>{
   let res = await getBannerAPI()
   BannerList.value = res.result
+  console.log(BannerList.value,'BannerList')
 }
 onMounted(()=>{
   categoryStore()

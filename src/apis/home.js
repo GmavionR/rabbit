@@ -1,7 +1,13 @@
 import http from '@/utils/http'
-export function getBannerAPI(){
+//适配接口
+export function getBannerAPI(params = {}){
+  // 默认为1 商品为2
+   const {distributionSite = '1'} = params
     return http({
-        url:'home/banner'
+        url:'home/banner',
+        params:{
+          distributionSite
+        }
     })
 }
 
