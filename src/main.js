@@ -6,12 +6,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-
-
-
-//
 const app = createApp(App)
-
 //
 app.use(createPinia())
 app.use(router)
@@ -22,4 +17,8 @@ app.mount('#app')
 import { lazyPlugin } from '@/directives/index.js'
 app.use(lazyPlugin)
   
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+const pinia = createPinia()
+app.use(pinia)
+pinia.use(piniaPluginPersistedstate)
 

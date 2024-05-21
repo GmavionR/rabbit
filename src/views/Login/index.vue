@@ -7,8 +7,8 @@ import {loginAPI} from '@/apis/user.js'
 import {useUserStore} from '@/stores/user.js'
 // 1. 准备表单对象
 const form = ref({
-  account: '18610848230',
-  password: '123456',
+  account: 'heima293',
+  password: 'hm#qd@23!',
   agree: true
 })
 // 2. 准备规则对象
