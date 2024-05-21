@@ -1,36 +1,16 @@
 <script setup>
-import {getCategoryAPI} from '@/apis/category.js'
 import { ref, reactive, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
 import axios from 'axios'
-import {onBeforeRouteUpdate} from 'vue-router'
-const categoryData = ref({})//ref返回value是{}，reactive返回value是Proxy。refImpl包装
-const route = useRoute()
-const getCategory = async (id = route.params.id) => {
-    const res = await getCategoryAPI(id)
-    // const res = await axios.get(`/category/${id}`)
-    categoryData.value = res.result
-    console.log(categoryData, 'categoryData222222222222')
-}
-onMounted(() => {
-    getCategory()
-    categoryStore({distributionSite: '2'})
-})
+import {useBanner} from './composables/useBanner'
+import {useCategory} from './composables/useCategory'
 
-// 轮播图
-import {getBannerAPI} from '@/apis/home.js'
-const BannerList = ref([])
-const categoryStore =async()=>{
-  let res = await getBannerAPI()
-  BannerList.value = res.result
-  console.log(BannerList.value,'BannerList')
-}
 
-onBeforeRouteUpdate((to)=>{
-    
-    console.log(to,'路由变化了')
-    getCategory(to.params.id)
-})
+const {categoryData} = useCategory()
+const {BannerList} = useBanner()
+
+
+
+
 
 </script>
 
