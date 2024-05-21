@@ -1,5 +1,7 @@
 //axios基础的封装
 import axios from 'axios'
+import {useUserStore} from '@/stores/user.js'
+
 
 const http = axios.create({
     baseURL:'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -9,6 +11,12 @@ const http = axios.create({
 //拦截器
 // axios请求拦截器
 http.interceptors.request.use(config => {
+  const userStore = useUserStore()
+  const token = userStore.userInfo.token
+  if(token){
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  
     return config
   }, e => Promise.reject(e))
   
@@ -16,6 +24,23 @@ http.interceptors.request.use(config => {
   http.interceptors.response.use(res => res.data, e => {
     return Promise.reject(e)
   })
+
+
+
+
+1
+//拦截器
+// axios请求拦截器
+// http.interceptors.request.use(config => {
+//   return config
+// }, e => Promise.reject(e))
+
+// // axios响应式拦截器
+// http.interceptors.response.use(res => res.data, e => {
+//   return Promise.reject(e)
+// })
+
+2
 
 // // 添加请求拦截器
 // http.interceptors.request.use(function (config) {
